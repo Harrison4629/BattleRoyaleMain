@@ -1,0 +1,45 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:guns"
+                }
+            ]
+        },{
+            "rolls": 3,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:skills"
+                }
+            ]
+        },{
+            "rolls": 2,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:armor"
+                }
+            ]
+        },{
+            "rolls": 2,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:throwable"
+                }
+            ]
+        },{
+            "rolls": 2,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:heal"
+                }
+            ]
+        }
+    ]
+}

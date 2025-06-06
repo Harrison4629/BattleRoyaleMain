@@ -1,0 +1,3 @@
+#设置完后初始化
+function battleroyale:scoreboard/scoreboardini
+function battleroyale:rules/suggestedrules

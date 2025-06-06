@@ -1,0 +1,63 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:guns/pistol",
+                    "weight": 10,
+                    "quality": -10
+                },
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:guns/rifle",
+                    "weight": 8,
+                    "quality": -8
+                },
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:guns/shotgun",
+                    "weight": 7,
+                    "quality": -7
+                },
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:guns/assault_rifle",
+                    "weight": 10,
+                    "quality": -10
+                },
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:guns/machine_pistol",
+                    "weight": 10,
+                    "quality": -10
+                },
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:guns/grenade_launcher",
+                    "weight": 1,
+                    "quality": 1
+                },
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:guns/heavy_rifle",
+                    "weight": 1,
+                    "quality": 1
+                },
+                {
+                    "type": "loot_table",
+                    "name": "battleroyale:guns/mini_gun",
+                    "weight": 1,
+                    "quality": 1
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:air",
+                    "weight": 8,
+                    "quality": -8
+                }
+            ]
+        }
+    ]
+}

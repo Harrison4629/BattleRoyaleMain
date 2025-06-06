@@ -1,0 +1,37 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "cgm:machine_pistol",
+          "functions": [
+            {
+              "function": "set_nbt",
+              "tag": "{AmmoCount:0}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "cgm:basic_bullet",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 30,
+                "max": 60
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

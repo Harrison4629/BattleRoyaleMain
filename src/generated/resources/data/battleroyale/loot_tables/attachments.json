@@ -1,0 +1,59 @@
+{
+    "pools": [
+        {
+            "rolls": 2,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "cgm:short_scope",
+                    "weight": 6
+                },
+                {
+                    "type": "item",
+                    "name": "cgm:medium_scope",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "cgm:long_scope",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "cgm:silencer",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "cgm:light_grip",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "cgm:specialised_grip",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "cgm:weighted_stock",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "cgm:light_stock",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "cgm:tactical_stock",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:air",
+                    "weight": 8
+                }
+            ]
+        }
+    ]
+}

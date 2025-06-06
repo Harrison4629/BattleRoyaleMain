@@ -1,0 +1,37 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "cgm:grenade_launcher",
+          "functions": [
+            {
+              "function": "set_nbt",
+              "tag": "{AmmoCount:0}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "cgm:grenade",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 3
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

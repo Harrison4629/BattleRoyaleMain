@@ -61,3 +61,21 @@ mandatory = true
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
+[[dependencies."${mod_id}"]]
+modId = "cgm"
+mandatory = true
+versionRange = "[1.3.7,)"
+ordering = "AFTER"
+side = "BOTH"
+[[dependencies."${mod_id}"]]
+modId = "battleroyalezone"
+mandatory = true
+versionRange = "[1.0.0,)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies."${mod_id}"]]
+modId = "battleroyaleitem"
+mandatory = true
+versionRange = "[1.0.0,)"
+ordering = "NONE"
+side = "BOTH"

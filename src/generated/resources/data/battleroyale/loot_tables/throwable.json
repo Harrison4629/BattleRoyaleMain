@@ -1,0 +1,33 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "cgm:stun_grenade",
+                    "weight": 3,
+                    "quality": 2
+                },
+                {
+                    "type": "item",
+                    "name": "cgm:grenade",
+                    "weight": 2,
+                    "quality": 4
+                },
+                {
+                    "type": "item",
+                    "name": "cgmbalance:smoke_grenade",
+                    "weight": 4,
+                    "quality": 2
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:air",
+                    "weight":8,
+                    "quality": -7
+                }
+            ]
+        }
+    ]
+}
