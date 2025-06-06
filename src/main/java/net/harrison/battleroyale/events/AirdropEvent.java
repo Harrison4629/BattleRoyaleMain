@@ -13,10 +13,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Mod.EventBusSubscriber(modid = Battleroyale.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -30,6 +34,17 @@ public class AirdropEvent {
             return;
         }
 
+        //只支持主世界生成空投
+        ServerLevel level = event.getServer().getLevel(Level.OVERWORLD);
+
+        if (!event.getRunningState()){
+            if (level != null) {
+                clearAirdrop(event, level);
+            }
+            return;
+        }
+
+
         if(event.getStage() >= ZoneConfig.getMaxStage() - 1 - 2) {
             return;
         }
@@ -38,14 +53,6 @@ public class AirdropEvent {
         Vec3 center = event.getZoneCenter();
 
 
-        //只支持主世界生成空投
-        ServerLevel level = event.getServer().getLevel(Level.OVERWORLD);
-
-
-        if (!event.getRunningState()){
-            clearAriodrop(event);
-            return;
-        }
 
         switch (state) {
 
@@ -97,6 +104,13 @@ public class AirdropEvent {
         hasSummoned = true;
     }
 
-    private static void clearAriodrop(ZoneStageEvent event) {
+    private static void clearAirdrop(ZoneStageEvent event, ServerLevel level) {
+        List<Entity> airdropToClear = new ArrayList<>(level.getEntities(ModEntities.AIRDROP.get(),
+                airdropEntity -> true
+        ));
+
+        for (Entity airdrop : airdropToClear) {
+            airdrop.remove(Entity.RemovalReason.DISCARDED);
+        }
     }
 }
