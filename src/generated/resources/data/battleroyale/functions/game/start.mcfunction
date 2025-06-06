@@ -35,7 +35,7 @@ scoreboard players reset @a[scores={inGame=1}] DeathDetect
 
 #从pospoint中随机选一个作为center,调用模组缩圈
 execute as @e[tag=pospoint, sort=random, limit=1] run data modify entity @s Tags append value "center"
-execute at @e[tag=center] run brzone start
+execute at @e[tag=center, limit=1] run brzone start
 
 
 #执行重置

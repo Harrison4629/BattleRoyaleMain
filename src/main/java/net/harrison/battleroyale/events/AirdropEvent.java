@@ -7,7 +7,7 @@ import net.harrison.battleroyalezone.config.ZoneConfig;
 import net.harrison.battleroyalezone.events.customEvents.ZoneStageEvent;
 import net.harrison.battleroyalezone.events.customEvents.ZoneStateEnum;
 import net.harrison.battleroyalezone.init.ModMessages;
-import net.harrison.battleroyalezone.networking.s2cpacket.AlarmSoundS2CPacket;
+import net.harrison.soundmanager.networking.s2cpacket.PlaySoundToClientS2CPacket;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -94,11 +94,11 @@ public class AirdropEvent {
 
         event.getServer().getPlayerList().broadcastSystemMessage(
                 Component.literal(String.format("§e§l空投已降落在 x:%.1f z:%.1f 附近！", x, z)),
-                true
+                false
         );
 
         for (ServerPlayer player : level.players()) {
-            ModMessages.sendToPlayer(new AlarmSoundS2CPacket(SoundEvents.ITEM_PICKUP, 1.0F, 1.0F), player);
+            ModMessages.sendToPlayer(new PlaySoundToClientS2CPacket(SoundEvents.ITEM_PICKUP, 1.0F, 1.0F), player);
         }
 
         hasSummoned = true;
