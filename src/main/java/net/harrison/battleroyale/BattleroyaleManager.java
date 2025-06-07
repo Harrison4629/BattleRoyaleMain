@@ -46,6 +46,36 @@ public class BattleroyaleManager {
         return platform;
     }
 
+    public static void setHobby() {
+        ServerLevel level = serverInstance.getLevel(ServerLevel.OVERWORLD);
+        if (level != null) {
+            for (Entity entity : level.getAllEntities()){
+                if (entity instanceof ArmorStand armorStand) {
+                    String tags = armorStand.getTags().toString();
+
+                    if (tags.contains("hobby")) {
+                        hobby = armorStand.position();
+                    }
+                }
+            }
+        }
+    }
+
+    private static void setPlatform() {
+        ServerLevel level = serverInstance.getLevel(ServerLevel.OVERWORLD);
+        if (level != null) {
+            for (Entity entity : level.getAllEntities()){
+                if (entity instanceof ArmorStand armorStand) {
+                    String tags = armorStand.getTags().toString();
+
+                    if (tags.contains("platform")) {
+                        platform = armorStand.position();
+                    }
+                }
+            }
+        }
+    }
+
 
     public static void getServer(MinecraftServer server){
         serverInstance = server;
@@ -66,27 +96,8 @@ public class BattleroyaleManager {
     }
 
     public static void startBattleRoyale() {
-        ServerLevel level = serverInstance.getLevel(ServerLevel.OVERWORLD);
-        if (level != null) {
-            for (Entity entity : level.getAllEntities()){
-                if (entity instanceof ArmorStand armorStand) {
-
-                    String tags = armorStand.getTags().toString();
-
-                    if (tags.contains("platform") && platform == null) {
-                        platform = armorStand.position();
-                    }
-
-                    if (tags.contains("hobby") && hobby == null) {
-                        hobby = armorStand.position();
-                    }
-
-                    if (platform != null && hobby != null) {
-                        break;
-                    }
-                }
-            }
-        }
+        setHobby();
+        setPlatform();
 
         //***************************************************
         if (platform == null) {
@@ -171,7 +182,7 @@ public class BattleroyaleManager {
                 .withStyle(ChatFormatting.OBFUSCATED));
 
         serverInstance.getPlayerList().broadcastSystemMessage(message, false);
-        player.level.playSound(null, player.blockPosition(), SoundEvents.ENDER_DRAGON_AMBIENT, SoundSource.PLAYERS, 2.0F, 1.0F);
+        player.level.playSound(null, player.blockPosition(), SoundEvents.ENDER_DRAGON_AMBIENT, SoundSource.PLAYERS, 1.0F, 1.0F);
         FireWorkEvent.setPlayTimesAndPos(12, player.getPosition(1.0F), player.level);
 
         List<ServerPlayer> spectatorPlayers = new ArrayList<>();
