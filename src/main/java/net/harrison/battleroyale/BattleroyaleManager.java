@@ -262,7 +262,6 @@ public class BattleroyaleManager {
                     net.harrison.battleroyaleitem.init
                             .ModMessages.sendToPlayer(new ArmorPlateSyncS2CPacket(numofArmorPlate.getNumofArmorPlate()), player);
                 });
-
             }
         }
     }
