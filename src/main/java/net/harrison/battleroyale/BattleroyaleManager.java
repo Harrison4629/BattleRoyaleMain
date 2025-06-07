@@ -96,6 +96,7 @@ public class BattleroyaleManager {
     }
 
     public static void startBattleRoyale() {
+
         setHobby();
         setPlatform();
 

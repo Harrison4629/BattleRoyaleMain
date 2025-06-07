@@ -1,7 +1,7 @@
 package net.harrison.battleroyale;
 
+import net.harrison.battleroyale.events.DelayLoadHobbyEvent;
 import net.harrison.battleroyale.init.ModCommands;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -45,8 +45,8 @@ public class Battleroyale {
     }
 
     @SubscribeEvent
-    public static void onServerStarted(ServerStartedEvent event) {
-        BattleroyaleManager.setHobby();
+    public void onServerStarted(ServerStartedEvent event) {
+        DelayLoadHobbyEvent.setDelayTicks(100);
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
