@@ -6,32 +6,32 @@
                 {
                     "type": "loot_table",
                     "name": "battleroyale:guns/pistol",
-                    "weight": 10,
-                    "quality": -10
+                    "weight": 20,
+                    "quality": -20
                 },
                 {
                     "type": "loot_table",
                     "name": "battleroyale:guns/rifle",
-                    "weight": 8,
-                    "quality": -8
+                    "weight": 18,
+                    "quality": -18
                 },
                 {
                     "type": "loot_table",
                     "name": "battleroyale:guns/shotgun",
-                    "weight": 7,
-                    "quality": -7
+                    "weight": 17,
+                    "quality": -17
                 },
                 {
                     "type": "loot_table",
                     "name": "battleroyale:guns/assault_rifle",
-                    "weight": 10,
-                    "quality": -10
+                    "weight": 20,
+                    "quality": -20
                 },
                 {
                     "type": "loot_table",
                     "name": "battleroyale:guns/machine_pistol",
-                    "weight": 10,
-                    "quality": -10
+                    "weight": 20,
+                    "quality": -20
                 },
                 {
                     "type": "loot_table",

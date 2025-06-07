@@ -1,5 +1,6 @@
 package net.harrison.battleroyale;
 
+import net.harrison.battleroyale.capabilities.temporary.GameBeginClearElytra;
 import net.harrison.battleroyale.events.FireWorkEvent;
 import net.harrison.battleroyale.events.GamingStartFallImmuneEvent;
 import net.harrison.battleroyaleitem.capabilities.armorplate.NumofArmorPlate;
@@ -18,7 +19,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.util.LazyOptional;
@@ -36,6 +40,10 @@ public class BattleroyaleManager {
 
     public static Vec3 getHobby() {
         return hobby;
+    }
+
+    public static Vec3 getPlatform() {
+        return platform;
     }
 
 
@@ -123,6 +131,8 @@ public class BattleroyaleManager {
                 player.getTags().add("inGame");
                 GamingStartFallImmuneEvent.setImmune(player.getUUID());
                 player.moveTo(platform);
+                player.setItemSlot(EquipmentSlot.CHEST, new ItemStack(Items.ELYTRA));
+                GameBeginClearElytra.setClearElytra(player.getUUID(), true);
             }
 
             serverInstance.getCommands().performPrefixedCommand(

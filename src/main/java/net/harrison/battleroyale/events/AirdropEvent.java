@@ -6,7 +6,7 @@ import net.harrison.battleroyaleitem.init.ModEntities;
 import net.harrison.battleroyalezone.config.ZoneConfig;
 import net.harrison.battleroyalezone.events.customEvents.ZoneStageEvent;
 import net.harrison.battleroyalezone.events.customEvents.ZoneStateEnum;
-import net.harrison.battleroyalezone.init.ModMessages;
+import net.harrison.soundmanager.init.ModMessages;
 import net.harrison.soundmanager.networking.s2cpacket.PlaySoundToClientS2CPacket;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
