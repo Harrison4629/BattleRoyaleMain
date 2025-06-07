@@ -19,7 +19,7 @@ public class BattleroyaleRunningEvent {
     private static boolean endCelebration = false;
 
     private static int delay = 0;
-    private final static int delayTime = 100;
+    private final static int delayTime = 160;
 
     @SubscribeEvent
     public static void onBattleroyaleRunning(TickEvent.ServerTickEvent event) {

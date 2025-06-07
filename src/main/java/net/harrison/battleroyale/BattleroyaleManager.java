@@ -1,18 +1,22 @@
 package net.harrison.battleroyale;
 
+import net.harrison.battleroyale.events.FireWorkEvent;
 import net.harrison.battleroyale.events.GamingStartFallImmuneEvent;
 import net.harrison.battleroyaleitem.capabilities.armorplate.NumofArmorPlate;
 import net.harrison.battleroyaleitem.capabilities.armorplate.NumofArmorPlateProvider;
 import net.harrison.battleroyaleitem.networking.s2cpacket.ArmorPlateSyncS2CPacket;
 import net.harrison.soundmanager.init.ModMessages;
 import net.harrison.soundmanager.networking.s2cpacket.PlaySoundToClientS2CPacket;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.protocol.game.ClientboundPlayerPositionPacket;
 import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.level.GameType;
@@ -95,12 +99,20 @@ public class BattleroyaleManager {
             serverInstance.getPlayerList().broadcastSystemMessage(
                     Component.literal("大逃杀正在运行中！请等待其结束"), false
             );
+            for (ServerPlayer player : serverInstance.getPlayerList().getPlayers()) {
+                ModMessages.sendToPlayer(new PlaySoundToClientS2CPacket(
+                        SoundEvents.VILLAGER_NO, 1.0F, 1.0F), player);
+            }
             return;
         }
 
         if (!EnoughPreparedPlayer()){
             serverInstance.getPlayerList().broadcastSystemMessage(
                     Component.literal("玩家数量不足！"), false);
+            for (ServerPlayer player : serverInstance.getPlayerList().getPlayers()) {
+                ModMessages.sendToPlayer(new PlaySoundToClientS2CPacket(
+                        SoundEvents.VILLAGER_NO, 1.0F, 1.0F), player);
+            }
             return;
         }
 
@@ -113,9 +125,14 @@ public class BattleroyaleManager {
                 player.moveTo(platform);
             }
 
+            serverInstance.getCommands().performPrefixedCommand(
+                    serverInstance.createCommandSourceStack().withSuppressedOutput(),
+                    "function battleroyale:game/start"
+            );
+
             player.connection.send(new ClientboundSetTitleTextPacket(Component.literal("§6Go! Go! Go!")));
 
-            ModMessages.sendToPlayer(new PlaySoundToClientS2CPacket(SoundEvents.STONE_BREAK, 1.0F, 1.0F), player);
+            ModMessages.sendToPlayer(new PlaySoundToClientS2CPacket(SoundEvents.ANVIL_USE, 1.0F, 1.0F), player);
         }
 
         isBattleRoyaleActive = true;
@@ -123,6 +140,29 @@ public class BattleroyaleManager {
 
     public static void endCelebration(ServerPlayer player) {
         double radius = 8.0F;
+
+        Component playerNameComponent = player.getName();
+        MutableComponent message = Component.empty();
+
+        message.append(Component.literal("A")
+                .withStyle(ChatFormatting.OBFUSCATED));
+        message.append(Component.literal("玩")
+                .withStyle(ChatFormatting.YELLOW));
+        message.append(Component.literal("家")
+                .withStyle(ChatFormatting.DARK_GREEN));
+        message.append(Component.literal(" ")
+                .withStyle(ChatFormatting.DARK_AQUA));
+        message.append(playerNameComponent);
+        message.append(Component.literal("胜")
+                .withStyle(ChatFormatting.DARK_RED));
+        message.append(Component.literal("利!")
+                .withStyle(ChatFormatting.DARK_PURPLE));
+        message.append(Component.literal("A")
+                .withStyle(ChatFormatting.OBFUSCATED));
+
+        serverInstance.getPlayerList().broadcastSystemMessage(message, false);
+        player.level.playSound(null, player.blockPosition(), SoundEvents.ENDER_DRAGON_AMBIENT, SoundSource.PLAYERS, 2.0F, 1.0F);
+        FireWorkEvent.setPlayTimesAndPos(12, player.getPosition(1.0F), player.level);
 
         List<ServerPlayer> spectatorPlayers = new ArrayList<>();
         for (ServerPlayer serverPlayer : serverInstance.getPlayerList().getPlayers()) {
@@ -175,6 +215,10 @@ public class BattleroyaleManager {
         }
 
         isBattleRoyaleActive = false;
+        serverInstance.getCommands().performPrefixedCommand(
+                serverInstance.createCommandSourceStack().withSuppressedOutput(),
+                "function battleroyale:game/end"
+        );
 
 
         for (ServerPlayer player : serverInstance.getPlayerList().getPlayers()) {
