@@ -17,7 +17,6 @@ execute as @a[scores={inGame=1}] run effect clear @s
 execute as @a[scores={inGame=1}] run effect give @s minecraft:instant_health 10 10
 execute as @a[scores={inGame=1}] run effect give @s minecraft:saturation 3 10
 
-schedule clear battleroyale:loop/fallloop
 
 execute as @a[scores={landed=1}] run scoreboard players reset @s landed
 

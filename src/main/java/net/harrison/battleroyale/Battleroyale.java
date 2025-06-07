@@ -1,8 +1,10 @@
 package net.harrison.battleroyale;
 
+import net.harrison.battleroyale.init.ModCommands;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,8 +19,6 @@ public class Battleroyale {
 
     public Battleroyale() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-
 
 
 
@@ -39,6 +39,7 @@ public class Battleroyale {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+        BattleroyaleManager.getServer(event.getServer());
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -47,5 +48,11 @@ public class Battleroyale {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
         }
+    }
+
+
+    @SubscribeEvent
+    public void onRegisterCommands(RegisterCommandsEvent event) {
+        ModCommands.register(event.getDispatcher());
     }
 }
