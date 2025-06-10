@@ -2,6 +2,7 @@ package net.harrison.battleroyale.events;
 
 import net.harrison.battleroyale.Battleroyale;
 import net.harrison.battleroyale.BattleroyaleManager;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -26,6 +27,7 @@ public class DelayLoadHobbyEvent {
         } else {
             BattleroyaleManager.setHobby();
             hasLoaded = true;
+            MinecraftForge.EVENT_BUS.unregister(DelayLoadHobbyEvent.class);
         }
     }
 

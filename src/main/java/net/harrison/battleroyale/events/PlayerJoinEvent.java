@@ -32,6 +32,7 @@ public class PlayerJoinEvent {
         } else {
             if (BattleroyaleManager.getHobby() != null) {
                 player.moveTo(BattleroyaleManager.getHobby());
+                player.setHealth(player.getMaxHealth());
             }
         }
     }

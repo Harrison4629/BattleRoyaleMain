@@ -22,7 +22,7 @@ public class ImmuneDamageBeforeStartEvent {
             return;
         }
 
-        if (!BattleroyaleManager.getStatus()) {
+        if (BattleroyaleManager.getStatus()) {
             return;
         }
 
